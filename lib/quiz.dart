@@ -1,0 +1,45 @@
+import 'package:adv_basics/questions_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:adv_basics/start_screen.dart';
+
+class Quiz extends StatefulWidget {
+  const Quiz({super.key});
+  @override
+  State<Quiz> createState() {
+    return _QuizState();
+  }
+}
+
+class _QuizState extends State<Quiz> {
+  var activeScreen = 'start-screen';
+
+  void switchScreen() {
+    setState(() {
+      activeScreen = 'questions-screen';
+    });
+  }
+
+  @override
+  Widget build(context) {
+    Widget ScreenWidget = StartScreen(switchScreen);
+
+    if (activeScreen == 'questions-screen') {
+      ScreenWidget = const QuestionsScreen();
+    }
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(colors: [
+              // Color.fromRGBO(134, 143, 150, 1),
+              // Color.fromRGBO(89, 97, 100, 1),
+              Colors.black,
+              Colors.black,
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          ),
+          child: ScreenWidget,
+        ),
+      ),
+    );
+  }
+}
