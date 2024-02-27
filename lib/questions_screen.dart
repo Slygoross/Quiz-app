@@ -26,46 +26,28 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     final currentQuestion = questions[0];
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          GradientText(
-            text: currentQuestion.text,
-            gradient: const LinearGradient(colors: [
-              Color.fromRGBO(212, 20, 90, 1),
-              Color.fromRGBO(251, 176, 59, 1),
-            ]),
-            style: const TextStyle(fontSize: 35.0),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[0],
-            onTap: () {},
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[1],
-            onTap: () {},
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[2],
-            onTap: () {},
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          AnswerButton(
-            answerText: currentQuestion.answers[3],
-            onTap: () {},
-          ),
-        ],
+      child: Container(
+        margin: const EdgeInsets.all(30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            GradientText(
+              text: currentQuestion.text,
+              gradient: const LinearGradient(colors: [
+                Color.fromRGBO(212, 20, 90, 1),
+                Color.fromRGBO(251, 176, 59, 1),
+              ]),
+              style: const TextStyle(fontSize: 35.0),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            ...currentQuestion.getShuffledAnswers().map((answer) {
+              return AnswerButton(answerText: answer, onTap: () {});
+            }),
+          ],
+        ),
       ),
     );
   }
