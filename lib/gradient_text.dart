@@ -20,7 +20,7 @@ class GradientText extends StatelessWidget {
       child: Text(
         text,
         style: style,
-        // textAlign: TextAlign.center,
+        textAlign: TextAlign.center,
       ),
     );
   }
