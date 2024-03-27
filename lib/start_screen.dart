@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:adv_basics/gradient_text.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen(this.startQuiz, {super.key});
@@ -33,13 +34,13 @@ class StartScreen extends StatelessWidget {
               backgroundColor: Colors.transparent,
             ),
             icon: const Icon(Icons.arrow_right_alt),
-            label: const GradientText(
+            label: GradientText(
               text: "Start Quiz",
               gradient: LinearGradient(colors: [
                 Color.fromRGBO(212, 20, 90, 1),
                 Color.fromRGBO(251, 176, 59, 1),
               ]),
-              style: TextStyle(fontSize: 25.0),
+              style: GoogleFonts.lato(fontSize: 25.0),
             ),
           )
         ],
